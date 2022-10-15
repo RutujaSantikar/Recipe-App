@@ -1,20 +1,17 @@
 <template>
   <div>
-    <AppHome />
+    
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import AppHome from './components/AppHome.vue'
+
 
 export default {
-  name: 'App',
-  components: {
-    AppHome
-  }
-}
+  name: "App",
+  
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

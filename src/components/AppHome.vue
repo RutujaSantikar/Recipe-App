@@ -7,7 +7,7 @@
     <section class="img-cont">
       <img v-bind:src="slider1" class="img-style"/>
     </section>
-    <div class="start-btn">Get Started</div>
+    <div class="start-btn">  <router-link to="/searchrecipe" class="white-text">Get Started</router-link> </div> 
   </div>
 </template>
 
@@ -26,10 +26,12 @@ data(){
 <style scoped> 
 .body{
   background-color: white;
+  height: 100vh;
 }
 .heading-title{
   color:   #f65b4a;
   font-family:'Times New Roman', Times, serif;
+
   
 }
 .img-cont, .start-btn{
@@ -40,8 +42,29 @@ data(){
   background-color: #f65b4a;
   color: white;
   padding: 20px;
+  letter-spacing:0.8em;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
   
 
+}
+.white-text{
+  color: white;
+}
+
+h1,h4{
+  padding: 10px;
+}
+@media (max-width:600px) {
+
+  .img-style{
+    width:90vw;
+  }
+  .start-btn{
+    padding: 20px 15px 20px 15px;
+  }
+   
 }
 
 </style>
