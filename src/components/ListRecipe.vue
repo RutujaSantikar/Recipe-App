@@ -1,24 +1,31 @@
 <template>
-  <div>
-    <div v-for="recipes in apiData" :key="recipes.id">
+<div>
+<div class="recipe-card">
+   <div class="recipe-intro" v-for="recipeinfo in apiData" :key="recipeinfo.id">
+    <div class="img-cont"> <img :src=" recipeinfo.thumbnail_url" />	</div>
+    <h5 class="recipe-title">{{ recipeinfo.name }}</h5>
+    
+   </div>
+   </div>
+
+   </div>
+  <!-- <div>
+    <div class="recipe-cont" v-for="recipeinfo in apiData" :key="recipeinfo.id">
       <b-card
-        title="Card Title"
-        img-src="https://picsum.photos/600/300/?image=25"
+        src="https://picsum.photos/600/300/?image=25"
         img-alt="Image"
         img-top
         tag="article"
         style="max-width: 19rem"
         class="mb-2"
       >
-        <b-card-text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </b-card-text>
+      <h2 class="card-title">{{ recipeinfo.name }}</h2>
+        
 
         <b-button href="#" variant="primary">Go somewhere</b-button>
       </b-card>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -28,7 +35,7 @@ export default {
 
   data() {
     return {
-      apiData: [],
+      apiData: {},
     };
   },
   mounted() {
@@ -45,15 +52,49 @@ export default {
       .request(options)
       .then( (response) => {
         console.log(response.data);
-        this.apiData = response.data;
+        this.apiData = response.data.results;
       
       })
       .catch(function (error) {
         console.error(error);
       });
   
+
+
+  
    },
 };
 </script>
 
-<style></style>
+<style scoped>
+.recipe-card{
+  display:grid;
+  grid-template-columns: auto auto auto;
+  grid-gap:2.5em;
+  width: 80%;
+  margin: 1em auto;
+  font-family:'Times New Roman', Times, serif;
+  
+
+
+}
+.recipe-intro{
+  border: 1px solid    #f65b4a;;
+  border-radius: 15px;
+}
+ img{
+  width:100%;
+  height:265px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+} 
+.recipe-title{
+  text-align: center;
+  padding: 8px;
+}
+.recipe-intro:hover{
+  background-color: #f65b4a;
+  color: white;
+}
+
+</style>
