@@ -1,31 +1,26 @@
 <template>
 <div>
-<div class="recipe-card">
-   <div class="recipe-intro" v-for="recipeinfo in apiData" :key="recipeinfo.id">
-    <div class="img-cont"> <img :src=" recipeinfo.thumbnail_url" />	</div>
-    <h5 class="recipe-title">{{ recipeinfo.name }}</h5>
+   <h1>What do you want to cook today ?</h1>
+   
+    <router-link class="text-decoration-none text-reset " to="/recipes/:id" >
+      
+      <div class="recipe-card">
+     
+       <div class="recipe-intro" v-for="recipeinfo in apiData" :key="recipeinfo.id">
+         <div class="img-cont"> <img :src=" recipeinfo.thumbnail_url" />	</div>
+         <h5 class="recipe-title">{{ recipeinfo.name }}</h5>
+         <p><i class="fas fa-clock"></i> {{ recipeinfo.total_time_minutes}} min <span> <i class="fas fa-star"></i> {{ recipeinfo.user_ratings.count_positive}}</span></p>
+       </div>
     
-   </div>
-   </div>
+</div>
+</router-link>
+   
+  
+    
+
 
    </div>
-  <!-- <div>
-    <div class="recipe-cont" v-for="recipeinfo in apiData" :key="recipeinfo.id">
-      <b-card
-        src="https://picsum.photos/600/300/?image=25"
-        img-alt="Image"
-        img-top
-        tag="article"
-        style="max-width: 19rem"
-        class="mb-2"
-      >
-      <h2 class="card-title">{{ recipeinfo.name }}</h2>
-        
-
-        <b-button href="#" variant="primary">Go somewhere</b-button>
-      </b-card>
-    </div>
-  </div> -->
+  
 </template>
 
 <script>
@@ -67,6 +62,25 @@ export default {
 </script>
 
 <style scoped>
+h1{
+  font-family:'Times New Roman', Times, serif;
+  padding:10px;
+  text-align: center;
+}
+h5:hover{
+  text-decoration: underline #f65b4a ;
+  
+}
+p{
+  
+  color: lightslategray;
+  font-weight: bold;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+span{
+  float: right;
+}
 .recipe-card{
   display:grid;
   grid-template-columns: auto auto auto;
@@ -74,13 +88,14 @@ export default {
   width: 80%;
   margin: 1em auto;
   font-family:'Times New Roman', Times, serif;
-  
-
-
-}
+  }
 .recipe-intro{
   border: 1px solid    #f65b4a;;
   border-radius: 15px;
+}
+.fas{
+  color: #f65b4a;
+  font-size: 14px;
 }
  img{
   width:100%;
@@ -92,9 +107,15 @@ export default {
   text-align: center;
   padding: 8px;
 }
-.recipe-intro:hover{
+/* .recipe-intro:hover{
   background-color: #f65b4a;
   color: white;
-}
+} */
 
+@media (max-width:600px) {
+
+  .recipe-card{
+    grid-template-columns: auto;
+  }
+}
 </style>

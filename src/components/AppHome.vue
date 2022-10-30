@@ -7,7 +7,7 @@
     <section class="img-cont">
       <img v-bind:src="slider1" class="img-style"/>
     </section>
-    <div class="start-btn">  <router-link to="/searchrecipe" class="white-text">Get Started</router-link> </div> 
+    <div class="start-btn">  <router-link to="/recipes" class="white-text">Get Started</router-link> </div> 
   </div>
 </template>
 
