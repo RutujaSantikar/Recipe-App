@@ -1,45 +1,42 @@
 <template>
 <div>
    <h1>What do you want to cook today ?</h1>
-   
-    <router-link class="text-decoration-none text-reset " to="/recipes/:id" >
-      
-      <div class="recipe-card">
-     
-       <div class="recipe-intro" v-for="recipeinfo in apiData" :key="recipeinfo.id">
+   <!-- <router-link class="text-decoration-none text-reset " :to="'/recipes/' + $route.params.id" > -->
+   <div class="recipe-card"  >
+         <div class="recipe-intro" v-for="recipeinfo in apiData" :key="recipeinfo.id" @click="recipeDetail(recipeinfo.id)">
          <div class="img-cont"> <img :src=" recipeinfo.thumbnail_url" />	</div>
          <h5 class="recipe-title">{{ recipeinfo.name }}</h5>
          <p><i class="fas fa-clock"></i> {{ recipeinfo.total_time_minutes}} min <span> <i class="fas fa-star"></i> {{ recipeinfo.user_ratings.count_positive}}</span></p>
        </div>
-    
-</div>
-</router-link>
-   
-  
-    
-
-
-   </div>
-  
-</template>
-
+    </div>
+<!-- </router-link> -->
+ </div>
+  </template>
 <script>
 import axios from "axios";
 export default {
   name: "ListRecipe",
-
-  data() {
+ data() {
     return {
+    
       apiData: {},
     };
+  },
+
+  methods:{
+    recipeDetail(id){
+      this.$router.push(`/recipes/${id}`);
+    }
+
   },
   mounted() {
     const options = {
       method: "GET",
-      url: "https://tasty.p.rapidapi.com/recipes/list",
+      url: "https://tasty.p.rapidapi.com/recipes/list" ,
       params: { from: "0", size: "20", tags: "under_30_minutes" },
+      
       headers: {
-        "X-RapidAPI-Key": "271c312016msh4f78003ead69183p19ec68jsnaef45ca1d70b",
+        'X-RapidAPI-Key': '0e0ae102demsh46d00dbc6a5146dp18e9c2jsn2a5867d4495a',
         "X-RapidAPI-Host": "tasty.p.rapidapi.com",
       },
     };
@@ -53,10 +50,6 @@ export default {
       .catch(function (error) {
         console.error(error);
       });
-  
-
-
-  
    },
 };
 </script>
