@@ -45,7 +45,8 @@ data(){
   letter-spacing:0.8em;
   font-size: 20px;
   font-weight: bold;
-  margin-top: 30px;
+  /* margin-top: 30px; */
+  height: auto;
   
 
 }
