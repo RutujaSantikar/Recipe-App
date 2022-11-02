@@ -1,15 +1,56 @@
 <template>
 <div>
-  <h1>details</h1>
+  
   <div class="recipe-detail-cont">
     <div class="recipe-details">
-      <div class="recipe-title">{{ apiData.name }}</div>
-      <div class="img-cont"><img /></div>
-      <div class="short-in">
-        <div class="time"><i class="fas fa-clock"></i></div>
-        <div class="rating"><i class="fas fa-star"></i> </div>
-        <div class="servings"><i class="fas fa-utensils"></i></div>
+      <div class="recipe-title"> <h2> {{ apiData.name }} </h2> </div>
+      <div class="recipe-description"><p>{{ apiData.description }}</p>
+      <template v-for=" authname in apiData.credits" >
+        <subscript :key="authname.id"> -By {{ authname.name}}</subscript>
+      </template>
       </div>
+      <div class="img-cont"><img :src=" apiData.thumbnail_url"/></div>
+      <div class="short-info">
+        <div class="time-cont">
+          <div class="time one"><i class="fas fa-clock"></i></div>
+          <div class="prep-time text">{{apiData.total_time_minutes}} Min</div>
+        </div>
+        <div class="rate-cont">
+        <div class="rating  one"><i class="fas fa-star"></i> </div>
+        <div class="rate text"> {{ apiData.user_ratings.count_positive}} Ratings</div>
+        </div>
+        <div class="serve-cont">
+        <div class="servings  one"><i class="fas fa-utensils"></i></div>
+        <div class="serve text">{{ apiData.num_servings }} Servings</div>
+        </div>
+      </div>
+
+      <div class="ingredients-cont"> <h3>Ingredients:</h3>
+      <ul>
+        <li v-for= "section in apiData.sections" :key="section.id"> 
+          <ul>
+          <li v-for= " component in section.components" :key="component.id">
+            {{ component.raw_text }}</li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+
+      
+      <div class="instructions"> <h3>Instructions:</h3>
+        <ol>
+        <li v-for = " instruction in apiData.instructions"  :key="instruction.id">{{ instruction.display_text }}</li>
+        </ol>
+      </div>
+      
+      <div class="video-cont">
+       <h4>Watch & cook</h4>
+        <video  width="450" height="300" type="video/mp4"  controls> 
+        <source :src="apiData.original_video_url">
+        </video>
+      </div>
+
+      
 
     </div>
   </div>
@@ -32,7 +73,7 @@ const options = {
   url: 'https://tasty.p.rapidapi.com/recipes/get-more-info',
   params: {id: this.$route.params.id},
   headers: {
-    'X-RapidAPI-Key': '0e0ae102demsh46d00dbc6a5146dp18e9c2jsn2a5867d4495a',
+    'X-RapidAPI-Key': '09fc8deba8msh8021bc52b08109fp14c4bcjsnc107dc22c927',
     'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
   }
 };
@@ -47,6 +88,90 @@ axios.request(options).then( (response) => {
 }
 </script>
 
-<style>
+<style scoped>
+.recipe-details{
+  width: 70%;
+  margin: 0 auto;
+}
+img{
+  width:90%;
+  height: 590px;
+  border-radius: 15px;
+}
+h2,h3,h4{
+  font-family: 'Quicksand', sans-serif;
+  padding: 8px;
+}
+h2{
+  text-decoration: underline  #f65b4a 3px;
+}
+.short-info{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  text-align: center;
+ 
+}
+subscript,.fas{
+  color:   #f65b4a;
+}
+.fas{
+  font-size: 17px;
+  background-color: rgb(222, 225, 228);
+  
+  border-radius: 20px;
+  padding: 10px;
+}
+subscript{
+font-weight: bold;
+padding: 5px;
+}
 
+.text{
+  font-family: 'Quicksand', sans-serif;
+  color: lightslategray;
+  font-weight: bold;
+  font-size: 16px;
+
+}
+.recipe-description{
+padding: 6px;
+
+font-family: 'Quicksand', sans-serif;
+color: lightslategray;
+
+}
+li{
+  
+  font-family: 'Quicksand', sans-serif;
+  color: rgb(75, 88, 101);
+  font-size: 18px;
+  margin: 3px;
+  
+}
+.ingredients-cont ul li{
+  list-style-type: none;
+}
+
+@media (max-width:600px) {
+
+  img{
+  width:100%;
+  height: 390px;
+
+}
+video{
+  width: 100%;
+  
+}
+.fas{
+  font-size: 15px;
+  padding: 8px;
+}
+.text{
+ 
+  font-size: 15px;
+
+}
+}
 </style>

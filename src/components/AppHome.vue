@@ -30,7 +30,7 @@ data(){
 }
 .heading-title{
   color:   #f65b4a;
-  font-family:'Times New Roman', Times, serif;
+ font-family: 'Quicksand', sans-serif;
 
   
 }
