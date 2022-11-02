@@ -73,7 +73,7 @@ const options = {
   url: 'https://tasty.p.rapidapi.com/recipes/get-more-info',
   params: {id: this.$route.params.id},
   headers: {
-    'X-RapidAPI-Key': '09fc8deba8msh8021bc52b08109fp14c4bcjsnc107dc22c927',
+    'X-RapidAPI-Key': 'a7d6170542msh95535dd546dd907p1d8c25jsn568bff2c8d3f',
     'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
   }
 };
@@ -117,7 +117,7 @@ subscript,.fas{
 }
 .fas{
   font-size: 17px;
-  background-color: rgb(222, 225, 228);
+  background-color: rgb(235, 236, 237);
   
   border-radius: 20px;
   padding: 10px;

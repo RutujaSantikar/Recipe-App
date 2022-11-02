@@ -37,7 +37,7 @@ export default {
       params: { from: "0", size: "20", tags: "under_30_minutes" },
       
       headers: {
-        'X-RapidAPI-Key': '09fc8deba8msh8021bc52b08109fp14c4bcjsnc107dc22c927',
+        'X-RapidAPI-Key': 'a7d6170542msh95535dd546dd907p1d8c25jsn568bff2c8d3f',
         "X-RapidAPI-Host": "tasty.p.rapidapi.com",
       },
     };
