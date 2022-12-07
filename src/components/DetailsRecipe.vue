@@ -157,8 +157,11 @@ li{
 
   img{
   width:100%;
-  height: 390px;
+  height: 300px;
 
+}
+li{
+  font-size: 17px;
 }
 video{
   width: 100%;

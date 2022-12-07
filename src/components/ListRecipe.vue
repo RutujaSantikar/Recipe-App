@@ -7,7 +7,7 @@
          
          
          <h5 class="recipe-title">{{ recipeinfo.name }}</h5>
-         <p><i class="fas fa-clock"></i> {{ recipeinfo.total_time_minutes}} min <span> <i class="fas fa-star"></i> {{ recipeinfo.user_ratings.count_positive}}</span></p>
+         <p><i class="fas fa-clock"></i> {{ recipeinfo.total_time_minutes}} min <span> <i class="fas fa-star"></i> {{ recipeinfo.count_positive}}</span></p>
        </div>
     </div>
 
@@ -83,12 +83,13 @@ span{
   width: 80%;
   margin: 1em auto;
   font-family: 'Quicksand', sans-serif;
+  
 
   }
 .recipe-intro{
   border: 1px solid    #f65b4a;
   border-radius: 15px;
-    box-shadow: 4px 9px 9px 4px rgba(191, 193, 194,0.6) ;
+  cursor: pointer;
 }
 .fas{
   color: #f65b4a;
